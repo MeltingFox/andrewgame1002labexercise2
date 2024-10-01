@@ -1,15 +1,12 @@
 ﻿title: YarnScript
 
 ---
-<<declare Goodness = 0>>
-Narrator: BEN works quietly at a desk; the room is small and poorly lit by
-one flickering lamp on the desk. The lone man was surrounded by
-books, letters, and maps. With take-out boxes covering the
-floor.
+<<declare $Goodness = 0>>
+Narrator: BEN works quietly at a desk; the room is small and poorly lit by one flickering lamp on the desk. The lone man was surrounded by books, letters, and maps. With take-out boxes covering thefloor.
 Narrator: A DOOR OPENS
 Matt: I got the coffee you asked for, it’s black.
     -> Just put it on the desk, thanks.
-        <<set Goodness = Goodness + 1>>
+        <<set $Goodness = $Goodness + 1>>
         Matt: Here you go!
         Narrator:Matt places the coffee on the desk, then looks at the work Ben
 was doing.
@@ -19,22 +16,21 @@ was doing.
         Partygoer B: Why don't you go over there?
             <<jump OverThere>>
     -> I'd rather go over here...
-        <<jump OverThere>>
+            <<jump OverThere>>
 ===
 
 title: OverHere
 ---
 Matt: Wow, you did all this in a night,
 Do you ever sleep?
-<<if Goodness > 0>>
+<<if $Goodness > 0>>
     -> It’s kind of hard to sleep when you have deadlines.
-            
             <<jump OverThere>>
     -> No, Never, why are you still here.
-            <<set Goodness = Goodness - 1>>
+            <<set $Goodness = $Goodness - 1>>
             <<jump OverThere>>
     -> Not really, thanks for the coffee, your a life saver.
-            <<set Goodness = Goodness + 1>>
+            <<set $Goodness = $Goodness + 1>>
             <<jump LifeSaver>>
 <<else>>
     Partygoer C: Oh, you don't have any to spare.
@@ -66,21 +62,5 @@ Partygoer D: Hi!
 
 title: LifeSaver
 ---
-Partygoer D: Hi!
-<<if $partyHats > 0 and $partyHats <= 2>>
-    Partygoer D: You're definitely fun.
-        -> Why?
-            Partygoer D: You like party hats.
-                -> Thanks! You're fun too.
-                    <<jump Party>>
-<<elseif $partyHats > 2>>
-    Partygoer D: You have too many hats!
-    Partygoer D: It really scares me.
-        -> Sorry...
-            <<jump Party>>
-<<else>>
-    Partygoer D: You should go party somewhere else in this party.
-        -> Oh, bye, then...
-            <<jump Party>>
-<<endif>>
+
 ===
