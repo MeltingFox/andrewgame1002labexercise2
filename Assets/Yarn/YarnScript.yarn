@@ -2,65 +2,124 @@
 
 ---
 <<declare $Goodness = 0>>
-Narrator: BEN works quietly at a desk; the room is small and poorly lit by one flickering lamp on the desk. The lone man was surrounded by books, letters, and maps. With take-out boxes covering thefloor.
-Narrator: A DOOR OPENS
+<<set $Goodness = 0>>
+Narrator: Ben works quietly at a desk; the room is small and poorly lit by one flickering lamp on the desk. The lone man was surrounded by books, letters, and maps. With take-out boxes covering the floor.
+Narrator: A door opens.
 Matt: I got the coffee you asked for, it’s black.
     -> Just put it on the desk, thanks.
         <<set $Goodness = $Goodness + 1>>
         Matt: Here you go!
-        Narrator:Matt places the coffee on the desk, then looks at the work Ben
-was doing.
+        Narrator:Matt places the coffee on the desk, then looks at the work Ben was doing.
             <<jump OverHere>>
-    -> No, thanks. I despise happiness. I relish misery.
-        Partygoer A: We see that.
-        Partygoer B: Why don't you go over there?
-            <<jump OverThere>>
-    -> I'd rather go over here...
-            <<jump OverThere>>
+    -> Black! I didn't ask for BLACK!
+       Matt: I'm sorry, I did know...
+            <<jump EndDick>>
+
 ===
 
 title: OverHere
 ---
-Matt: Wow, you did all this in a night,
-Do you ever sleep?
-<<if $Goodness > 0>>
+Matt: Wow, you did all this in a night, Do you ever sleep?
     -> It’s kind of hard to sleep when you have deadlines.
-            <<jump OverThere>>
+            <<jump LifeSaver>>
     -> No, Never, why are you still here.
             <<set $Goodness = $Goodness - 1>>
-            <<jump OverThere>>
+            <<jump LifeSaver>>
     -> Not really, thanks for the coffee, your a life saver.
             <<set $Goodness = $Goodness + 1>>
             <<jump LifeSaver>>
-<<else>>
-    Partygoer C: Oh, you don't have any to spare.
-    Partygoer C: Cya around, I guess.
-    <<jump Party>>
-<<endif>>
 ===
 
 title: OverThere
 ---
-Partygoer D: Hi!
-<<if $partyHats > 0 and $partyHats <= 2>>
-    Partygoer D: You're definitely fun.
-        -> Why?
-            Partygoer D: You like party hats.
-                -> Thanks! You're fun too.
-                    <<jump Party>>
-<<elseif $partyHats > 2>>
-    Partygoer D: You have too many hats!
-    Partygoer D: It really scares me.
-        -> Sorry...
-            <<jump Party>>
-<<else>>
-    Partygoer D: You should go party somewhere else in this party.
-        -> Oh, bye, then...
-            <<jump Party>>
-<<endif>>
+
 ===
 
 title: LifeSaver
 ---
+<<if $Goodness >= 2>>
+    Matt: No, problem. 
+<<else>>
+    Matt: Um...
+<<endif>>
+-> Now that's you here, can you take this to Danielle?
+        Narrator: Ben reaches across the desk, careful not to move his other work, grabs a stack of paper from a large pile, and gives it to Matt.
+        Matt: Wow, this is heavy, what is it?
+         -> It's the report I was doing all last night.
+            Narrator: Matt carefully flips through the report.
+            Matt(Confusion): Didn’t Jack do the same thing two days ago?
+            -> What?
+                Matt: Yeah, it was assigned to him.
+                -> Are you telling me that someone already did the report?
+                        <<set $Goodness = $Goodness + 1>>
+                        <<jump Niceguy>>
+                -> Fuck, I just wasted my precious time on something that was ready done!
+                        <<jump Madend>>
+===
+
+title: Niceguy
+---
+Matt: Um.. yea, Jack was doing nothing so we gave it to him.
+-> Well I can get mad at you.
+    Matt(relieved): Yes, I am not quite sure why it was given to you...
+    <<set $Goodness = $Goodness + 1>>
+    <<jump GoodEnd>>
+-> Fuck, I just wasted my precious time on something that was ready done!
+    <<jump Madend>>
+===
+
+title: Madend
+---
+Narrator: Matt slowly backs up, and glances at the door.
+Matt(carefully): Well... at least you know it's done properly...
+    -> Get Out!
+    Narrator: Matt nods and semi quickly walks out the door.
+        -> Close it!
+        Narrator: Matt shut the door.
+        Narrator: The End
+===
+
+title: EndDick
+---
+
+Narrator: Ben's yelling had carried out to the hall. Unfortunately for Ben, the manager was walking past Ben's room.
+Manager: What the hell! What's the problem here?
+Narrator: The manager looked mad.
+Matt(Sobbing): He was mad at me.
+Manager: Explain yourself!
+    -> Umm..
+        Manager: You are FIRED.
+        Narrator: Ben's wife was so mad at him, that she left him, and took the kids.
+        Narrator: The End
+    -> This idiot got me black!
+        Manager: What did you just call him...
+        Manager: You are FIRED.
+        Narrator: Ben's wife was so mad at him, that she left him, and took the kids.
+        Narrator: The End
+
+===
+
+title: GoodEnd
+---
+<<if $Goodness >= 4>>
+Narrator: A knock on door
+    -> look at door
+    Narrator: The Manager Danielle was at the door of the room.
+    Danielle: Are you done that report?
+        -> Yes
+        Danielle: Great, I couldn't trust Jack to do it right.
+        Narrator: Danielle reads the report
+        Danielle: I am impressed you can take the rest of the week off.
+        Narrator: Ben went home, now with more time at home, his wife came home to dinner ready.
+        Narrator: The End
+<<elseif $Goodness >= 3>>
+
+<<else>>
+    Matt: Um...
+<<endif>>
+
+
+
+
 
 ===
