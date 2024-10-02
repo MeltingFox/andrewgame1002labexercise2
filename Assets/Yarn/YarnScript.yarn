@@ -77,6 +77,8 @@ Matt(carefully): Well... at least you know it's done properly...
         -> Close it!
         Narrator: Matt shut the door.
         Narrator: The End
+            -> retry?
+                <<jump YarnScript>>
 ===
 
 title: EndDick
@@ -91,11 +93,15 @@ Manager: Explain yourself!
         Manager: You are FIRED.
         Narrator: Ben's wife was so mad at him, that she left him, and took the kids.
         Narrator: The End
+            -> retry?
+                <<jump YarnScript>>
     -> This idiot got me black!
         Manager: What did you just call him...
         Manager: You are FIRED.
         Narrator: Ben's wife was so mad at him, that she left him, and took the kids.
         Narrator: The End
+            -> retry?
+                <<jump YarnScript>>
 
 ===
 
@@ -109,17 +115,22 @@ Narrator: A knock on door
         -> Yes
         Danielle: Great, I couldn't trust Jack to do it right.
         Narrator: Danielle reads the report
+        Matt: Ben pull an all nighter for this report.
         Danielle: I am impressed you can take the rest of the week off.
-        Narrator: Ben went home, now with more time at home, his wife came home to dinner ready.
-        Narrator: The End
+        Narrator: Ben went home, now with more time at home, Ben's wife came home to dinner ready.
 <<elseif $Goodness >= 3>>
-
+Matt: I guess I should go hand this to Danielle 
+    -> Yes your right...
+    Narrator: Later that day, Ben's manager congratulated him and give the office a pizza party. 
 <<else>>
-    Matt: Um...
+    Matt: Um... I guess I should go hand this to Danielle 
+    Narrator: As Matt leaves the room, Ben wonders if he could have been nicer to Matt
 <<endif>>
 
 
-
+Narrator: The End
+    -> retry?
+        <<jump YarnScript>>
 
 
 ===
